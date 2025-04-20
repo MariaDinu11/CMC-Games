@@ -1,0 +1,18 @@
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
+const authenticateUser = require('../middleware/auth');
+
+// Rută pentru înregistrare
+router.post('/register', authController.register);
+
+// Rută pentru autentificare
+router.post('/login', authController.login);
+
+// Rută pentru verificarea token-ului (necesită autentificare)
+router.get('/verify', authenticateUser, authController.verifyToken);
+
+// Rută pentru delogare
+router.post('/logout', authController.logout);
+
+module.exports = router;
