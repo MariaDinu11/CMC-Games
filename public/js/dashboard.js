@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (showLoginBtn) {
         showLoginBtn.addEventListener('click', () => {
             // Redirect to login.html
-            window.location.href = 'login.html';
+            window.location.href = '../html/login.html';
         });
     }
     

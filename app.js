@@ -32,11 +32,11 @@ app.use('/api/auth', authRoutes);
 
 // Rută implicită pentru SPA (Single Page Application)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public/html', 'index.html'));
   });
   
   app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.status(404).sendFile(path.join(__dirname, 'public/html', 'index.html'));
   });
 
 // Pornire server
