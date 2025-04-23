@@ -6,6 +6,7 @@
   <title>Autentificare - CMC Games</title>
   <link rel="stylesheet" href="../css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Login Page -->
@@ -13,43 +14,38 @@
     <div class="login-form-column">
       <div class="login-logo">
         <div class="logo-circle">
-          <img src="logo.png" alt="CMC Games Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'40\' fill=\'%23e9d5ff\'/%3E%3Ctext x=\'50\' y=\'55\' font-family=\'Arial\' font-size=\'20\' text-anchor=\'middle\' fill=\'%237e22ce\'%3ECMC%3C/text%3E%3C/svg%3E';">
+          <img src="../assets/logo.png" alt="CMC Games Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'40\' fill=\'%23e9d5ff\'/%3E%3Ctext x=\'50\' y=\'55\' font-family=\'Arial\' font-size=\'20\' text-anchor=\'middle\' fill=\'%237e22ce\'%3ECMC%3C/text%3E%3C/svg%3E';">
         </div>
       </div>
       
-      <div class="form-wrapper">
-        <div class="tab-container">
-          <button class="tab-button active">LOGIN</button>
-          <button class="tab-button">SIGN UP</button>
-          <div class="tab-indicator"></div>
+      <div class="tab-container">
+        <button class="tab-button login">LOGIN</button>
+        <button class="tab-button signup">SIGN UP</button>
+        <div class="tab-underline"></div>
+        <div class="tab-indicator"></div>
+      </div>
+      
+      <div id="message" class="form-message"></div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" id="username-label" for="username">Username</label>
+          <div class="input-container">
+            <i class="fa-regular fa-user input-icon username-icon"></i>
+            <input type="text" id="username" class="form-input" placeholder="Please enter your Username" required>
+          </div>
         </div>
         
-        <div id="message" class="form-message"></div>
+        <div class="form-group">
+          <label class="form-label" id="password-label" for="password">Password</label>
+          <div class="input-container">
+            <i class="fa-solid fa-lock input-icon password-icon"></i>
+            <input type="password" id="password" class="form-input" placeholder="Please enter your Password" required>
+          </div>
+        </div>
         
-        <form id="loginForm">
-          <div class="form-group">
-            <label class="form-label" for="username">Username</label>
-            <div class="input-container">
-              <i class="fa-regular fa-user input-icon"></i>
-              <input type="text" id="username" class="form-input" placeholder="Please enter your Username" required>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="password">Password</label>
-            <div class="input-container">
-              <i class="fa-solid fa-lock input-icon"></i>
-              <input type="password" id="password" class="form-input" placeholder="Please enter your Password" required>
-            </div>
-          </div>
-          
-          <div class="forgot-password">
-            <a href="#">Forgot Password?</a>
-          </div>
-          
-          <button type="submit" class="login-button">Login</button>
-        </form>
-      </div>
+        <button type="submit" class="login-button">Login</button>
+      </form>
     </div>
     
     <div class="login-image-column">

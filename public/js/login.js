@@ -3,6 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const loginForm = document.getElementById('loginForm');
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabIndicator = document.querySelector('.tab-indicator');
@@ -65,10 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('authToken', data.token);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     
-                    // Redirect after 1 second
-                    setTimeout(() => {
+                    
                         window.location.href = '/';
-                    }, 1000);
                 } else {
                     // Failed login
                     showMessage('error', data.message || 'Eroare la autentificare');
@@ -95,14 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // If coming from another page with errors/messages, check URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const errorMsg = urlParams.get('error');
-    const successMsg = urlParams.get('success');
-    
-    if (errorMsg) {
-        showMessage('error', decodeURIComponent(errorMsg));
-    } else if (successMsg) {
-        showMessage('success', decodeURIComponent(successMsg));
-    }
 });
