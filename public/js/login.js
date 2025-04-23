@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('user', JSON.stringify(data.user));
                     
                     
-                        window.location.href = '/';
+                        window.location.href = '../html/homepage.html';
                 } else {
                     // Failed login
                     showMessage('error', data.message || 'Eroare la autentificare');
