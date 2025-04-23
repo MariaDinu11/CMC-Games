@@ -1,67 +1,108 @@
+/**
+ * Login.js - Handles login functionality for the gaming platform
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabIndicator = document.querySelector('.tab-indicator');
+    
+    // Tab functionality
+    tabButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Move the indicator
+            tabIndicator.style.left = `${index * 50}%`;
+        });
+    });
     
     if (loginForm) {
-      loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Obține valorile din formular
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        // Validare simplă pe client
-        if (!username || !password) {
-          showMessage('error', 'Toate câmpurile sunt obligatorii');
-          return;
-        }
-        
-        try {
-          // Trimite cererea de autentificare către server
-          const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password })
-          });
-          
-          const data = await response.json();
-          
-          if (response.ok) {
-            // Autentificare reușită
-            showMessage('success', 'Autentificare reușită! Redirectare...');
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
             
-            // Salvează token-ul în localStorage
-            localStorage.setItem('authToken', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
+            // Get form values
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            // Redirecționare după 1 secundă
-            setTimeout(() => {
-              window.location.href = '/dashboard.html';
-            }, 1000);
-          } else {
-            // Autentificare eșuată
-            showMessage('error', data.message || 'Eroare la autentificare');
-          }
-        } catch (error) {
-          console.error('Eroare:', error);
-          showMessage('error', 'Eroare la conectarea cu serverul');
-        }
-      });
+            // Basic client-side validation
+            if (!username || !password) {
+                showMessage('error', 'Toate câmpurile sunt obligatorii');
+                return;
+            }
+            
+            try {
+                // Show loading state
+                const submitBtn = loginForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = 'Se procesează...';
+                submitBtn.disabled = true;
+                
+                // Send authentication request to server
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                // Reset button state
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                
+                if (response.ok) {
+                    // Successful login
+                    showMessage('success', 'Autentificare reușită! Redirectare...');
+                    
+                    // Save token to localStorage
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Redirect after 1 second
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                } else {
+                    // Failed login
+                    showMessage('error', data.message || 'Eroare la autentificare');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('error', 'Eroare la conectarea cu serverul');
+            }
+        });
     }
     
-    // Funcție pentru afișarea mesajelor
+    // Function to display messages
     function showMessage(type, text) {
-      const messageDiv = document.getElementById('message');
-      if (messageDiv) {
-        messageDiv.className = `message ${type}`;
-        messageDiv.textContent = text;
-        messageDiv.style.display = 'block';
-        
-        // Ascunde mesajul după 5 secunde
-        setTimeout(() => {
-          messageDiv.style.display = 'none';
-        }, 5000);
-      }
+        const messageDiv = document.getElementById('message');
+        if (messageDiv) {
+            messageDiv.className = `form-message ${type}`;
+            messageDiv.textContent = text;
+            messageDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
     }
-  });
+    
+    // If coming from another page with errors/messages, check URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorMsg = urlParams.get('error');
+    const successMsg = urlParams.get('success');
+    
+    if (errorMsg) {
+        showMessage('error', decodeURIComponent(errorMsg));
+    } else if (successMsg) {
+        showMessage('success', decodeURIComponent(successMsg));
+    }
+});

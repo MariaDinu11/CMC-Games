@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
 // Pornire server
 app.listen(PORT, () => {
   console.log(`Serverul rulează pe portul ${PORT}`);
+  console.log(`Accesați aplicația la http://localhost:${PORT}`);
 });
 
 module.exports = app;

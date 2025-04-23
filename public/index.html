@@ -1,11 +1,89 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CMC Games</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Platform</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Bine ai venit la CMC Games!</h1>
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-content">
+                    CMC
+                    <div style="display: flex; justify-content: center;">
+                        <div class="logo-line"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="sidebar-icon active">📹</button>
+            <button class="sidebar-icon">🏠</button>
+            <button class="sidebar-icon">👤</button>
+            
+            <div class="sidebar-bottom">
+                <button class="sidebar-icon">⚙️</button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+                
+                <button class="login-btn" id="showLoginBtn">Login</button>
+            </div>
+            
+            <!-- Games Grid -->
+            <div class="games-container">
+                <div class="games-grid">
+                    <!-- Game Card 1 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <div class="lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <div class="lock-text">You have to login to unlock</div>
+                                <div class="lock-text">this game</div>
+                            </div>
+                        </div>
+                        <div class="game-title">GemLeague</div>
+                    </div>
+                    
+                    <!-- Game Card 2 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <div class="lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <div class="lock-text">You have to login to unlock</div>
+                                <div class="lock-text">this game</div>
+                            </div>
+                        </div>
+                        <div class="game-title">Tank Wars</div>
+                    </div>
+                    
+                    <!-- Game Card 3 -->
+                    <div class="game-card">
+                        <div class="game-image">
+                            <div class="lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <div class="lock-text">You have to login to unlock</div>
+                                <div class="lock-text">this game</div>
+                            </div>
+                        </div>
+                        <div class="game-title">Carcassonne</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
