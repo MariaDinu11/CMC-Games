@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Check if we're on the login page
     const backBtn = document.querySelector('.back-btn');
     if (backBtn) {
         backBtn.addEventListener('click', () => {
-            // Go back to the main page
             window.location.href = '/';
         });
     }

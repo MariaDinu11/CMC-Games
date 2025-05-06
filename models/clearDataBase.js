@@ -8,14 +8,11 @@ const Message = require('./Message');
 
 async function clearDatabase() {
   try {
-    // Conectare la MongoDB
     await mongoose.connect('mongodb://localhost:27017/cmc_games');
     console.log('Conectat la baza de date MongoDB');
 
-    // Șterge toate datele din fiecare colecție
     console.log('Începe ștergerea datelor...');
 
-    // Șterge mai întâi colecțiile care au dependențe (ordinea este importantă)
     const deleteMessages = await Message.deleteMany({});
     console.log(`${deleteMessages.deletedCount} mesaje au fost șterse`);
 
@@ -37,7 +34,6 @@ async function clearDatabase() {
 
     console.log('Toate datele au fost șterse cu succes!');
     
-    // Verifică dacă baza de date este acum goală
     const remainingGames = await Game.countDocuments();
     const remainingChannels = await Channel.countDocuments();
     const remainingRatings = await Rating.countDocuments();

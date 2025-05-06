@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Platform</title>
+    <link rel="stylesheet" href="../css/carcassonne.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Logo">
+            </div>
+            
+            <button class="sidebar-icon active">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 6H3C2.45 6 2 6.45 2 7V17C2 17.55 2.45 18 3 18H21C21.55 18 22 17.55 22 17V7C22 6.45 21.55 6 21 6Z" stroke="currentColor" fill="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6 11H8" stroke="#1A1C24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 10V12" stroke="#1A1C24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="17" cy="11" r="1" fill="#1A1C24"/>
+                  <circle cx="15" cy="13" r="1" fill="#1A1C24"/>
+                </svg>
+              </button>
+              
+              <!-- Iconița pentru Grafic Statistică (A doua) -->
+              <button class="sidebar-icon">
+                <?xml version="1.0" ?><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 2" id="Layer_2"><path d="M18,3V2H6V3a4,4,0,1,0,0,8h.81A6,6,0,0,0,11,13.91V16H7.22l-1.5,6H18.28l-1.5-6H13V13.91A6,6,0,0,0,17.19,11H18a4,4,0,0,0,0-8ZM6,9A2,2,0,0,1,4,7,2,2,0,0,1,6,5V8a5.47,5.47,0,0,0,.09,1Zm13.41-.59A2,2,0,0,1,18,9h-.09A5.47,5.47,0,0,0,18,8V5a2,2,0,0,1,2,2A2,2,0,0,1,19.41,8.41Z" fill="currentColor"/></g></svg>
+              </button>
+              
+            <button class="sidebar-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+                    <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="currentColor"/>
+                </svg>
+            </button>
+            
+            <div class="sidebar-bottom">
+                <button class="sidebar-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" fill="currentColor"/>
+                        <path d="M2 12.88V11.12C2 10.08 2.85 9.22 3.9 9.22C5.71 9.22 6.45 7.94 5.54 6.37C5.02 5.47 5.33 4.3 6.24 3.78L7.97 2.79C8.76 2.32 9.78 2.6 10.25 3.39L10.36 3.58C11.26 5.15 12.74 5.15 13.65 3.58L13.76 3.39C14.23 2.6 15.25 2.32 16.04 2.79L17.77 3.78C18.68 4.3 18.99 5.47 18.47 6.37C17.56 7.94 18.3 9.22 20.11 9.22C21.15 9.22 22.01 10.07 22.01 11.12V12.88C22.01 13.92 21.16 14.78 20.11 14.78C18.3 14.78 17.56 16.06 18.47 17.63C18.99 18.54 18.68 19.7 17.77 20.22L16.04 21.21C15.25 21.68 14.23 21.4 13.76 20.61L13.65 20.42C12.75 18.85 11.27 18.85 10.36 20.42L10.25 20.61C9.78 21.4 8.76 21.68 7.97 21.21L6.24 20.22C5.33 19.7 5.02 18.53 5.54 17.63C6.45 16.06 5.71 14.78 3.9 14.78C2.85 14.78 2 13.92 2 12.88Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-container">
+                    <span class="search-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#8F8F8F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 22L20 20" stroke="#8F8F8F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+                
+                <!-- Added User Icon -->
+                <div class="user-icon-container">
+                    <div class="user-icon">
+                        <div class="user-avatar">
+                            <div class="avatar-placeholder"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="#8F8F8F"/>
+                                <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="#8F8F8F"/>
+                            </svg></div>
+                        </div>
+                        <div class="status-indicator"></div>
+                    </div>
+                </div>
+            </div>
+           <!-- Game and Chat Container -->
+           <div class="game-container">
+            <!-- Game Section -->
+            <div class="game-section">
+                <div class="game-image"></div>
+                <div class="game-title">Carcassonne</div>
+                <div class="game-description">
+                    Place your tiles strategically to build cities, roads, and monasteries. Score points by completing structures and claiming territories with your meeples.
+                </div>
+                <div class="leaderboard">
+                    <div class="leaderboard-title">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+                            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" fill="#FFD700"/>
+                            <path d="M18 3V2H6V3a4 4 0 1 0 0 8h.81A6 6 0 0 0 11 13.91V16H7.22l-1.5 6H18.28l-1.5-6H13V13.91A6 6 0 0 0 17.19 11H18a4 4 0 0 0 0-8ZM6 9A2 2 0 0 1 4 7 2 2 0 0 1 6 5V8a5.47 5.47 0 0 0 .09 1Zm13.41-.59A2 2 0 0 1 18 9h-.09A5.47 5.47 0 0 0 18 8V5a2 2 0 0 1 2 2A2 2 0 0 1 19.41 8.41Z" fill="#FFD700"/>
+                        </svg>
+                        Top Player
+                    </div>
+                    <div class="leaderboard-entry">
+                        <div class="leaderboard-avatar">DZ</div>
+                        <div class="leaderboard-info">
+                            <div class="leaderboard-name">Dzika</div>
+                            <div class="leaderboard-score">1,596 points</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-title">LIVE CHAT</div>
+                
+                <div class="chat-messages">
+                    <!-- Message 1 -->
+                    <div class="chat-message">
+                        <div class="chat-avatar">BD</div>
+                        <div class="chat-bubble">
+                            <div class="chat-user">BogDan<span class="chat-time">2h ago</span></div>
+                            <div class="chat-text">Lorem ipsum?</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message 2 -->
+                    <div class="chat-message">
+                        <div class="chat-avatar">NP</div>
+                        <div class="chat-bubble">
+                            <div class="chat-user">NewPlayer9 <span class="chat-time">2h ago</span></div>
+                            <div class="chat-text">Lorem ipsum dolor sit amet, consectetur</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message 3 -->
+                    <div class="chat-message">
+                        <div class="chat-avatar">MJ</div>
+                        <div class="chat-bubble">
+                            <div class="chat-user">MrJam <span class="chat-time">2h ago</span></div>
+                            <div class="chat-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat Input - Moved to the bottom where it belongs -->
+                <div class="chat-input" style="margin-top: auto;">
+                    <input type="text" placeholder="Send Message">
+                    <button>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rules Section -->
+        <div class="rules-container">
+            <div class="rules-section">
+                <div class="rules-title">Game Rules</div>
+                <div class="rules-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    
+                    <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="../js/carcassonne.js"></script>
+</body>
+</html>
