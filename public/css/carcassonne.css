@@ -213,14 +213,25 @@ body {
     min-width: 320px;
 }
 
-.game-image {
+.unity-container {
     width: 100%;
-    height: 500px;
+    height: 0;
+    padding-bottom: 56.25%; /* Raport de aspect 16:9 (1440/2560 = 0.5625) */
     border-radius: 16px;
-    background-size: cover;
-    background-position: center;
     margin-bottom: 20px;
-    background-image: url('https://source.unsplash.com/random/800x400/?boardgame');
+    overflow: hidden;
+    background-color: #000;
+    position: relative;
+}
+
+#unity-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 16px;
 }
 
 .game-title {
