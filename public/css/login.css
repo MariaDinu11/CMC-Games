@@ -67,7 +67,7 @@ body {
     font-size: 18px;
     line-height: 38px;
     text-transform: uppercase;
-    color: #9C5EAF;
+    color: #67696F;
     background: none;
     border: none;
     cursor: pointer;
@@ -91,6 +91,10 @@ body {
     cursor: pointer;
 }
 
+.tab-button.active {
+    color: #9C5EAF;
+}
+
 .tab-indicator {
     position: absolute;
     width: 255px;
@@ -99,6 +103,7 @@ body {
     top: 226px;
     background: #9C5EAF;
     z-index: 2;
+    transition: left 0.3s ease;
 }
 
 .tab-underline {
@@ -122,6 +127,7 @@ body {
     color: #ECECEC;
 }
 
+/* Login form labels - RESTORED to original positions */
 #username-label {
     width: 171px;
     height: 34px;
@@ -134,6 +140,35 @@ body {
     height: 34px;
     left: 75px;
     top: 460px;
+}
+
+/* Register form labels - Adjusted positions (moved up) */
+#email-label {
+    width: 171px;
+    height: 34px;
+    left: 76px;
+    top: 260px;
+}
+
+#reg-username-label {
+    width: 171px;
+    height: 34px;
+    left: 76px;
+    top: 370px;
+}
+
+#reg-password-label {
+    width: 171px;
+    height: 34px;
+    left: 76px;
+    top: 480px;
+}
+
+#confirm-password-label {
+    width: 171px;
+    height: 34px;
+    left: 76px;
+    top: 590px;
 }
 
 .input-container {
@@ -162,6 +197,7 @@ body {
     color: #8F8F8F;
 }
 
+/* Login form inputs - RESTORED to original positions */
 #username {
     left: 76px;
     top: 339px;
@@ -172,6 +208,27 @@ body {
     top: 488px;
 }
 
+/* Register form inputs - Adjusted positions (moved up) */
+#email {
+    left: 76px;
+    top: 255px;
+}
+
+#reg-username {
+    left: 76px;
+    top: 366px;
+}
+
+#reg-password {
+    left: 76px;
+    top: 475px;
+}
+
+#confirm-password {
+    left: 76px;
+    top: 586px;
+}
+
 .input-icon {
     position: absolute;
     z-index: 1;
@@ -179,6 +236,7 @@ body {
     font-size: 18px;
 }
 
+/* Login form icons - RESTORED to original positions */
 .username-icon {
     left: 96px;
     top: 360px;
@@ -189,14 +247,34 @@ body {
     top: 509px;
 }
 
+/* Register form icons - Adjusted positions (moved up) */
+.email-icon {
+    left: 96px;
+    top: 276px;
+}
 
-/* Login button */
+.reg-username-icon {
+    left: 96px;
+    top: 389px;
+}
+
+.reg-password-icon {
+    left: 96px;
+    top: 497px;
+}
+
+.confirm-password-icon {
+    left: 96px;
+    top: 609px;
+}
+
+/* Login button - RESTORED to original position */
 .login-button {
     position: absolute;
     width: 511px;
     height: 53px;
     left: 76px;
-    top: 848px;
+    top: 700px;
     background: linear-gradient(180deg, #9C5EAF 0%, #640384 100%);
     border-radius: 15px;
     border: none;
@@ -207,6 +285,11 @@ body {
     line-height: 170%;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+/* Position for the register form button */
+#registerForm .login-button {
+    top: 710px;
 }
 
 /* Login image column */
@@ -230,6 +313,11 @@ body {
     margin-bottom: 15px;
     font-size: 14px;
     display: none;
+    position: absolute;
+    width: 511px;
+    left: 76px;
+    top: 260px;
+    z-index: 10;
 }
 
 .form-message.error {
@@ -278,7 +366,8 @@ body {
         left: 5%;
     }
     
-    #username-label, #password-label {
+    #username-label, #password-label,
+    #email-label, #reg-username-label, #reg-password-label, #confirm-password-label {
         left: 5%;
     }
     

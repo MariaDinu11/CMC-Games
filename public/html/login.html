@@ -19,7 +19,7 @@
       </div>
       
       <div class="tab-container">
-        <button class="tab-button login">LOGIN</button>
+        <button class="tab-button login active">LOGIN</button>
         <button class="tab-button signup">SIGN UP</button>
         <div class="tab-underline"></div>
         <div class="tab-indicator"></div>
@@ -27,6 +27,7 @@
       
       <div id="message" class="form-message"></div>
       
+      <!-- Login Form -->
       <form id="loginForm">
         <div class="form-group">
           <label class="form-label" id="username-label" for="username">Username</label>
@@ -45,6 +46,43 @@
         </div>
         
         <button type="submit" class="login-button">Login</button>
+      </form>
+      
+      <!-- Registration Form (Initially Hidden) -->
+      <form id="registerForm" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" id="email-label" for="email">Email Address</label>
+          <div class="input-container">
+            <i class="fa-regular fa-envelope input-icon email-icon"></i>
+            <input type="email" id="email" class="form-input" placeholder="Please enter your Email" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" id="reg-username-label" for="reg-username">Username</label>
+          <div class="input-container">
+            <i class="fa-regular fa-user input-icon reg-username-icon"></i>
+            <input type="text" id="reg-username" class="form-input" placeholder="Please enter your Username" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" id="reg-password-label" for="reg-password">Password</label>
+          <div class="input-container">
+            <i class="fa-solid fa-lock input-icon reg-password-icon"></i>
+            <input type="password" id="reg-password" class="form-input" placeholder="Please enter your Password" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" id="confirm-password-label" for="confirm-password">Confirm password</label>
+          <div class="input-container">
+            <i class="fa-solid fa-lock input-icon confirm-password-icon"></i>
+            <input type="password" id="confirm-password" class="form-input" placeholder="Please re-enter your Password" required>
+          </div>
+        </div>
+        
+        <button type="submit" class="login-button">Sign up</button>
       </form>
     </div>
     
