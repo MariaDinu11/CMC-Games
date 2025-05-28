@@ -395,3 +395,97 @@ body {
 .rules-content p {
     margin-bottom: 16px;
 }
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    max-height: 400px; /* Limitează înălțimea pentru scroll */
+    padding-right: 8px; /* Spațiu pentru scrollbar */
+}
+
+/* Stilizează scrollbar-ul */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #1A1C24;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #8F8F8F;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #9C5EAF;
+}
+
+/* Animație pentru mesaje noi */
+.chat-message {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Îmbunătățiri pentru input */
+.chat-input input:focus {
+    outline: 2px solid #9C5EAF;
+    outline-offset: -2px;
+}
+
+.chat-input button:hover {
+    background-color: #8A4F9A;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+.chat-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-title::after {
+  content: attr(data-online-count);
+  background-color: #4CD964;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Animație pentru mesaje noi */
+@keyframes messageAlert {
+  0% { background-color: rgba(156, 94, 175, 0.3); }
+  100% { background-color: transparent; }
+}
+
+.chat-message.new-message {
+  animation: messageAlert 2s ease-out;
+}
+
+.chat-section[data-game="football"] .chat-title {
+  color: #4CD964;
+}
+
+.chat-section[data-game="tank-wars"] .chat-title {
+  color: #FF6B6B;
+}
+
+.chat-section[data-game="carcassonne"] .chat-title {
+  color: #9C5EAF;
+}

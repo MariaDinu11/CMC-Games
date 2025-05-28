@@ -1,10 +1,9 @@
-/**
- * Dashboard.js - Handles dashboard functionality for the gaming platform
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Dashboard elements
-    const dashboard = document.getElementById('dashboard');
-    const showLoginBtn = document.getElementById('showLoginBtn');
-    
+  const chatManager = new UniversalChatManager('football');
+  window.chatManager = chatManager;
+  
+  // Cere permisiunea pentru notificări
+  if (Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
 });
