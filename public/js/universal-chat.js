@@ -1,8 +1,7 @@
-// UNIVERSAL-CHAT.JS - Chat universal pentru toate jocurile
 class UniversalChatManager {
   constructor(gameRoom) {
     this.socket = io();
-    this.gameRoom = gameRoom || this.detectGameRoom(); // Auto-detectează jocul
+    this.gameRoom = gameRoom || this.detectGameRoom();
     this.currentUser = this.getCurrentUser();
     
     if (!this.currentUser) {
@@ -13,7 +12,6 @@ class UniversalChatManager {
     this.initializeChat();
   }
 
-  // Detectează automat jocul pe baza URL-ului sau paginii
   detectGameRoom() {
     const currentPath = window.location.pathname;
     const currentFile = window.location.href;
@@ -24,16 +22,9 @@ class UniversalChatManager {
       return 'football';
     } else if (currentPath.includes('tank') || currentFile.includes('tank')) {
       return 'tank-wars';
-    } else {
-      // Fallback - încearcă să detecteze din titlul paginii sau alt element
-      const pageTitle = document.title.toLowerCase();
-      if (pageTitle.includes('football')) return 'football';
-      if (pageTitle.includes('tank')) return 'tank-wars';
-      if (pageTitle.includes('carcassonne')) return 'carcassonne';
-      
-      // Default fallback
-      return 'general';
     }
+    
+    return 'general';
   }
 
   getCurrentUser() {
@@ -56,6 +47,7 @@ class UniversalChatManager {
       return {
         username: userData.username,
         email: userData.email || '',
+        userType: userData.userType || 'player',
         avatar: this.generateAvatar(userData.username),
         authToken: authToken
       };
@@ -83,7 +75,10 @@ class UniversalChatManager {
       username: this.currentUser.username
     };
     
-    this.socket.emit('join-game', this.gameRoom);
+    // Reconectează automat dacă se pierde conexiunea
+    this.socket.on('connect', () => {
+      this.socket.emit('join-game', this.gameRoom);
+    });
 
     this.socket.on('connect_error', (error) => {
       console.error('Eroare de conectare:', error.message);
@@ -102,13 +97,25 @@ class UniversalChatManager {
       this.displayNewMessage(messageData);
     });
 
-    // Ascultă pentru numărul de utilizatori online
     this.socket.on('users-count', (count) => {
       this.updateOnlineCount(count);
     });
 
+    this.socket.on('message-moderated', (data) => {
+      this.handleMessageModeration(data);
+    });
+
+    this.socket.on('error', (message) => {
+      this.showError(message);
+    });
+
     this.setupChatInput();
     this.updateChatTitle();
+    
+    // Dacă e moderator/admin, adaugă funcționalități suplimentare
+    if (this.currentUser.userType === 'moderator' || this.currentUser.userType === 'admin') {
+      this.setupModerationFeatures();
+    }
   }
 
   updateChatTitle() {
@@ -118,7 +125,7 @@ class UniversalChatManager {
         'carcassonne': 'CARCASSONNE CHAT',
         'football': 'FOOTBALL CHAT',
         'tank-wars': 'TANK WARS CHAT',
-        'general': 'LIVE CHAT'
+        'general': 'CHAT GENERAL'
       };
       chatTitle.textContent = gameNames[this.gameRoom] || 'LIVE CHAT';
     }
@@ -141,46 +148,126 @@ class UniversalChatManager {
     chatMessages.innerHTML = '';
 
     messages.forEach(message => {
-      this.displayMessage({
-        username: message.username,
-        message: message.message,
-        avatar: message.avatar,
-        timestamp: new Date(message.timestamp)
-      });
+      this.displayMessage(message, false);
     });
 
     this.scrollToBottom();
   }
 
   displayNewMessage(messageData) {
-    this.displayMessage(messageData);
+    this.displayMessage(messageData, true);
     this.scrollToBottom();
     this.showNewMessageNotification();
   }
 
-  displayMessage(data) {
+  displayMessage(data, isNew = false) {
     const chatMessages = document.querySelector('.chat-messages');
     if (!chatMessages) return;
     
     const timeAgo = this.formatTimeAgo(data.timestamp);
+    const isOwnMessage = data.username === this.currentUser.username;
+    const canModerate = (this.currentUser.userType === 'moderator' || this.currentUser.userType === 'admin') && !isOwnMessage;
     
     const messageElement = document.createElement('div');
     messageElement.className = 'chat-message';
+    messageElement.dataset.messageId = data._id || '';
+    messageElement.dataset.timestamp = data.timestamp;
     
-    const isOwnMessage = data.username === this.currentUser.username;
     if (isOwnMessage) {
       messageElement.classList.add('own-message');
     }
     
+    if (isNew) {
+      messageElement.classList.add('new-message');
+    }
+    
+    if (data.isModerated) {
+      messageElement.classList.add('moderated-message');
+    }
+    
+    // Opțiuni de moderare pentru moderatori/admini
+    const moderationOptions = canModerate && !data.isModerated ? `
+      <div class="message-options">
+        <button onclick="window.chatManager.moderateMessage('${data._id}')" title="Moderează mesajul" class="moderate-btn">⚠️</button>
+      </div>
+    ` : '';
+    
+    const moderatedIndicator = data.isModerated ? `<span class="moderated-indicator" title="Mesaj moderat">🚫</span>` : '';
+    
     messageElement.innerHTML = `
       <div class="chat-avatar" style="background-color: ${this.getAvatarColor(data.username)}">${data.avatar}</div>
       <div class="chat-bubble">
-        <div class="chat-user">${data.username}${isOwnMessage ? ' (tu)' : ''}<span class="chat-time">${timeAgo}</span></div>
-        <div class="chat-text">${this.escapeHtml(data.message)}</div>
+        <div class="chat-user">
+          ${data.username}${isOwnMessage ? ' (tu)' : ''}
+          <span class="chat-time">${timeAgo}</span>
+          ${moderatedIndicator}
+        </div>
+        <div class="chat-text ${data.isModerated ? 'moderated-content' : ''}">${data.isModerated ? '[Mesaj moderat]' : this.escapeHtml(data.message)}</div>
+        ${moderationOptions}
       </div>
     `;
     
     chatMessages.appendChild(messageElement);
+  }
+
+  setupModerationFeatures() {
+    // Adaugă un indicator că utilizatorul este moderator
+    const chatTitle = document.querySelector('.chat-title');
+    if (chatTitle) {
+      const moderatorBadge = document.createElement('span');
+      moderatorBadge.className = 'moderator-badge';
+      moderatorBadge.textContent = this.currentUser.userType.toUpperCase();
+      moderatorBadge.title = 'Ai permisiuni de moderare';
+      chatTitle.appendChild(moderatorBadge);
+    }
+  }
+
+  moderateMessage(messageId) {
+    const reason = prompt('Motivul moderării (opțional):');
+    if (reason !== null) { // Nu a fost anulat
+      this.socket.emit('moderate-message', {
+        messageId: messageId,
+        reason: reason.trim() || 'Conținut neadecvat'
+      });
+    }
+  }
+
+  handleMessageModeration(data) {
+    const messageElement = document.querySelector(`[data-message-id="${data.messageId}"]`);
+    if (messageElement) {
+      messageElement.classList.add('moderated-message');
+      const textElement = messageElement.querySelector('.chat-text');
+      if (textElement) {
+        textElement.textContent = '[Mesaj moderat]';
+        textElement.classList.add('moderated-content');
+      }
+      
+      // Adaugă indicatorul de moderare
+      const userElement = messageElement.querySelector('.chat-user');
+      if (userElement && !userElement.querySelector('.moderated-indicator')) {
+        const indicator = document.createElement('span');
+        indicator.className = 'moderated-indicator';
+        indicator.textContent = '🚫';
+        indicator.title = `Moderat de ${data.moderatedBy}: ${data.reason}`;
+        userElement.appendChild(indicator);
+      }
+    }
+  }
+
+  showError(message) {
+    // Poți personaliza acest sistem de notificări
+    console.error('Eroare chat:', message);
+    // Opțional: arată o notificare vizuală
+    const notification = document.createElement('div');
+    notification.className = 'chat-error-notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 5000);
   }
 
   setupChatInput() {
@@ -228,9 +315,7 @@ class UniversalChatManager {
     }
 
     this.socket.emit('send-message', {
-      username: this.currentUser.username,
       message: message,
-      avatar: this.currentUser.avatar,
       gameRoom: this.gameRoom
     });
 
@@ -238,7 +323,6 @@ class UniversalChatManager {
   }
 
   showNewMessageNotification() {
-    // Dacă fereastra nu e în focus, arată notificare
     if (document.hidden) {
       if (Notification.permission === 'granted') {
         new Notification(`Mesaj nou în ${this.getGameDisplayName()}`, {

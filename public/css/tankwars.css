@@ -478,3 +478,78 @@ body {
 .chat-section[data-game="carcassonne"] .chat-title {
   color: #9C5EAF;
 }
+
+.moderator-badge {
+  background-color: #FF6B6B;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.moderated-message {
+  opacity: 0.7;
+}
+
+.moderated-content {
+  font-style: italic;
+  color: #8F8F8F;
+}
+
+.moderated-indicator {
+  margin-left: 4px;
+  cursor: help;
+}
+
+.message-options {
+  display: none;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.chat-message:hover .message-options {
+  display: flex;
+}
+
+.moderate-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.moderate-btn:hover {
+  background-color: rgba(255, 107, 107, 0.2);
+}
+
+.chat-error-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #FF6B6B;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  z-index: 1000;
+  max-width: 300px;
+  font-size: 14px;
+}
+
+.new-message {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
