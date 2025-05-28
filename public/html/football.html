@@ -29,11 +29,11 @@
               </button>
               
               <!-- Iconița pentru Grafic Statistică (A doua) -->
-              <button class="sidebar-icon">
+              <button class="sidebar-icon" onclick="window.location.href='leaderboard.html'">
                 <?xml version="1.0" ?><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 2" id="Layer_2"><path d="M18,3V2H6V3a4,4,0,1,0,0,8h.81A6,6,0,0,0,11,13.91V16H7.22l-1.5,6H18.28l-1.5-6H13V13.91A6,6,0,0,0,17.19,11H18a4,4,0,0,0,0-8ZM6,9A2,2,0,0,1,4,7,2,2,0,0,1,6,5V8a5.47,5.47,0,0,0,.09,1Zm13.41-.59A2,2,0,0,1,18,9h-.09A5.47,5.47,0,0,0,18,8V5a2,2,0,0,1,2,2A2,2,0,0,1,19.41,8.41Z" fill="currentColor"/></g></svg>
               </button>
               
-            <button class="sidebar-icon">
+            <button class="sidebar-icon" onclick="window.location.href='profile.html'">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
                     <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="currentColor"/>
@@ -41,10 +41,11 @@
             </button>
             
             <div class="sidebar-bottom">
-                <button class="sidebar-icon">
+                <button class="sidebar-icon" onclick="logout()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" fill="currentColor"/>
-                        <path d="M2 12.88V11.12C2 10.08 2.85 9.22 3.9 9.22C5.71 9.22 6.45 7.94 5.54 6.37C5.02 5.47 5.33 4.3 6.24 3.78L7.97 2.79C8.76 2.32 9.78 2.6 10.25 3.39L10.36 3.58C11.26 5.15 12.74 5.15 13.65 3.58L13.76 3.39C14.23 2.6 15.25 2.32 16.04 2.79L17.77 3.78C18.68 4.3 18.99 5.47 18.47 6.37C17.56 7.94 18.3 9.22 20.11 9.22C21.15 9.22 22.01 10.07 22.01 11.12V12.88C22.01 13.92 21.16 14.78 20.11 14.78C18.3 14.78 17.56 16.06 18.47 17.63C18.99 18.54 18.68 19.7 17.77 20.22L16.04 21.21C15.25 21.68 14.23 21.4 13.76 20.61L13.65 20.42C12.75 18.85 11.27 18.85 10.36 20.42L10.25 20.61C9.78 21.4 8.76 21.68 7.97 21.21L6.24 20.22C5.33 19.7 5.02 18.53 5.54 17.63C6.45 16.06 5.71 14.78 3.9 14.78C2.85 14.78 2 13.92 2 12.88Z" fill="currentColor"/>
+                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 12H9" stroke="currentColor" stroke-width="2"/>
                     </svg>
                 </button>
             </div>
@@ -64,16 +65,37 @@
                     <input type="text" class="search-input" placeholder="Search">
                 </div>
                 
-                <!-- Added User Icon -->
+                <!-- Updated User Icon with Dropdown -->
                 <div class="user-icon-container">
-                    <div class="user-icon">
+                    <div class="user-icon" onclick="toggleUserMenu()">
                         <div class="user-avatar">
-                            <div class="avatar-placeholder"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="#8F8F8F"/>
-                                <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="#8F8F8F"/>
-                            </svg></div>
+                            <div class="avatar-placeholder" id="headerAvatar">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="#8F8F8F"/>
+                                    <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="#8F8F8F"/>
+                                </svg>
+                            </div>
                         </div>
                         <div class="status-indicator"></div>
+                    </div>
+                    
+                    <!-- User Dropdown Menu -->
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-item" onclick="window.location.href='profile.html'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+                                <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="currentColor"/>
+                            </svg>
+                            See Profile
+                        </div>
+                        <div class="dropdown-item" onclick="logout()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 12H9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Logout
+                        </div>
                     </div>
                 </div>
             </div>

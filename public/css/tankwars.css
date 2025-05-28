@@ -553,3 +553,107 @@ body {
     transform: translateY(0);
   }
 }
+
+.user-icon-container {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #272932;
+    border-radius: 12px;
+    padding: 8px 0;
+    min-width: 180px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    margin-top: 8px;
+}
+
+.user-dropdown.show {
+    display: block;
+    animation: dropdownSlide 0.2s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #8F8F8F;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 8px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background-color: #1A1C24;
+    color: white;
+}
+
+.dropdown-item svg {
+    color: inherit;
+    flex-shrink: 0;
+}
+
+/* User icon cursor pointer */
+.user-icon {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.user-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Status indicator animation */
+.status-indicator {
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Game cards hover effect enhancement */
+.game-card {
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(156, 94, 175, 0.3);
+}
+
+.game-card:hover .game-title {
+    color: #9C5EAF;
+}
+
+/* Search input enhancements */
+.search-input:focus {
+    outline: none;
+    border: 2px solid #9C5EAF;
+    background-color: #1A1C24;
+}

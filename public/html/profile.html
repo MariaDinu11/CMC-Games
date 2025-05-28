@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil - Gaming Platform</title>
+    <title>Profile - Gaming Platform</title>
     <link rel="stylesheet" href="../css/profile.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -55,7 +55,7 @@
             <!-- Header -->
             <div class="header">
                 <div class="page-title">
-                    <h1>Profilul Meu</h1>
+                    <h1>My Profile</h1>
                 </div>
                 
                 <div class="user-icon-container">
@@ -78,7 +78,7 @@
                                 <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
                                 <path d="M12 14.5C6.99 14.5 3 17.86 3 22H21C21 17.86 17.01 14.5 12 14.5Z" fill="currentColor"/>
                             </svg>
-                            Vezi Profilul
+                            View Profile
                         </div>
                         <div class="dropdown-item" onclick="logout()">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,10 +105,10 @@
                     <div class="profile-info">
                         <h2 class="username" id="profileUsername">Loading...</h2>
                         <p class="user-email" id="profileEmail">Loading...</p>
-                        <p class="join-date" id="profileJoinDate">Membru din: Loading...</p>
+                        <p class="join-date" id="profileJoinDate">Member since: Loading...</p>
                     </div>
                     <div class="profile-actions">
-                        <button class="edit-profile-btn" onclick="editProfile()">Editează Profilul</button>
+                        <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
                     </div>
                 </div>
                 
@@ -116,37 +116,37 @@
                 <div class="stats-overview">
                     <div class="stat-card">
                         <div class="stat-number" id="totalGames">0</div>
-                        <div class="stat-label">Jocuri Jucate</div>
+                        <div class="stat-label">Games Played</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="totalWins">0</div>
-                        <div class="stat-label">Victorii</div>
+                        <div class="stat-label">Wins</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="winRate">0%</div>
-                        <div class="stat-label">Rata Victorie</div>
+                        <div class="stat-label">Win Rate</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="avgRating">1200</div>
-                        <div class="stat-label">Rating Mediu</div>
+                        <div class="stat-label">Average Rating</div>
                     </div>
                 </div>
                 
                 <!-- Game Stats -->
                 <div class="game-stats-section">
-                    <h3>Statistici pe Jocuri</h3>
+                    <h3>Game Statistics</h3>
                     <div class="game-stats-grid" id="gameStatsGrid">
                         <!-- Game stats will be loaded by JS -->
-                        <div class="loading">Se încarcă statisticile...</div>
+                        <div class="loading">Loading statistics...</div>
                     </div>
                 </div>
                 
                 <!-- Recent Games -->
                 <div class="recent-games-section">
-                    <h3>Jocuri Recente</h3>
+                    <h3>Recent Games</h3>
                     <div class="recent-games-list" id="recentGamesList">
                         <!-- Recent games will be loaded by JS -->
-                        <div class="loading">Se încarcă jocurile recente...</div>
+                        <div class="loading">Loading recent games...</div>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@
     <div class="modal" id="editProfileModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Editează Profilul</h3>
+                <h3>Edit Profile</h3>
                 <span class="close" onclick="closeEditModal()">&times;</span>
             </div>
             <div class="modal-body">
@@ -171,22 +171,22 @@
                         <input type="email" id="editEmail" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="currentPassword">Parola Actuală:</label>
+                        <label for="currentPassword">Current Password:</label>
                         <input type="password" id="currentPassword" name="currentPassword">
                     </div>
                     <div class="form-group">
-                        <label for="newPassword">Parola Nouă (opțional):</label>
+                        <label for="newPassword">New Password (optional):</label>
                         <input type="password" id="newPassword" name="newPassword">
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Confirmă Parola:</label>
+                        <label for="confirmPassword">Confirm Password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="closeEditModal()" class="btn-cancel">Anulează</button>
-                <button type="button" onclick="saveProfile()" class="btn-save">Salvează</button>
+                <button type="button" onclick="closeEditModal()" class="btn-cancel">Cancel</button>
+                <button type="button" onclick="saveProfile()" class="btn-save">Save</button>
             </div>
         </div>
     </div>

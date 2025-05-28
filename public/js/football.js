@@ -7,3 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Notification.requestPermission();
   }
 });
+
+function toggleUserMenu() {
+  const dropdown = document.getElementById('userDropdown');
+  dropdown.classList.toggle('show');
+}
