@@ -1,0 +1,454 @@
+/* PROFILE.CSS */
+/* Import base styles from dashboard.css */
+@import url('./dashboard.css');
+
+/* Profile specific styles */
+.page-title h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+/* User Dropdown */
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #272932;
+    border-radius: 12px;
+    padding: 8px 0;
+    min-width: 180px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #8F8F8F;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #1A1C24;
+    color: white;
+}
+
+.dropdown-item svg {
+    color: inherit;
+}
+
+/* Profile Container */
+.profile-container {
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background-color: #272932;
+    padding: 32px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+}
+
+.profile-avatar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9C5EAF 0%, #640384 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    border: 4px solid #1A1C24;
+}
+
+.user-status-badge {
+    background-color: #4CD964;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.user-status-badge.moderator {
+    background-color: #FF6B6B;
+}
+
+.user-status-badge.admin {
+    background-color: #FFD700;
+    color: #1A1C24;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.username {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 8px 0;
+}
+
+.user-email {
+    font-size: 16px;
+    color: #8F8F8F;
+    margin: 0 0 4px 0;
+}
+
+.join-date {
+    font-size: 14px;
+    color: #8F8F8F;
+    margin: 0;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.edit-profile-btn {
+    background: linear-gradient(180deg, #9C5EAF 0%, #640384 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.edit-profile-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Stats Overview */
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background-color: #272932;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #9C5EAF;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #8F8F8F;
+    font-weight: 600;
+}
+
+/* Game Stats Section */
+.game-stats-section {
+    margin-bottom: 32px;
+}
+
+.game-stats-section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.game-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.game-stat-card {
+    background-color: #272932;
+    padding: 24px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #9C5EAF 0%, #640384 100%);
+}
+
+.game-stat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.game-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+.game-rating {
+    font-size: 20px;
+    font-weight: 700;
+    color: #9C5EAF;
+}
+
+.game-stat-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.stat-detail {
+    text-align: center;
+}
+
+.stat-detail-number {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+.stat-detail-label {
+    font-size: 12px;
+    color: #8F8F8F;
+    margin-top: 4px;
+}
+
+/* Recent Games Section */
+.recent-games-section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.recent-games-list {
+    background-color: #272932;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.recent-game-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #1A1C24;
+    transition: background-color 0.2s ease;
+}
+
+.recent-game-item:last-child {
+    border-bottom: none;
+}
+
+.recent-game-item:hover {
+    background-color: #1A1C24;
+}
+
+.game-result-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.game-result-indicator.win {
+    background-color: #4CD964;
+}
+
+.game-result-indicator.loss {
+    background-color: #FF6B6B;
+}
+
+.game-result-indicator.draw {
+    background-color: #FFD700;
+}
+
+.recent-game-info {
+    flex: 1;
+}
+
+.recent-game-name {
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.recent-game-date {
+    font-size: 12px;
+    color: #8F8F8F;
+}
+
+.recent-game-score {
+    font-weight: 600;
+    color: #9C5EAF;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #272932;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #1A1C24;
+}
+
+.modal-header h3 {
+    color: white;
+    margin: 0;
+}
+
+.close {
+    color: #8F8F8F;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: white;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #1A1C24;
+    border: 1px solid #8F8F8F;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #9C5EAF;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 24px;
+    border-top: 1px solid #1A1C24;
+}
+
+.btn-cancel, .btn-save {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel {
+    background-color: #8F8F8F;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #7A7A7A;
+}
+
+.btn-save {
+    background: linear-gradient(180deg, #9C5EAF 0%, #640384 100%);
+    color: white;
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+}
+
+.loading {
+    text-align: center;
+    color: #8F8F8F;
+    padding: 40px;
+    font-style: italic;
+}
