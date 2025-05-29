@@ -657,3 +657,23 @@ body {
     border: 2px solid #9C5EAF;
     background-color: #1A1C24;
 }
+.unity-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Raport de aspect 16:9 (1440/2560 = 0.5625) */
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #000;
+    position: relative;
+}
+
+#unity-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 16px;
+}
