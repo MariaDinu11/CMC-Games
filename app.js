@@ -13,6 +13,9 @@ const Channel = require('./models/Channel');
 const User = require('./models/User');
 const Game = require('./models/Game');
 const GameSession = require('./models/GameSession');
+const leaderboardRoutes = require('./routes/leaderboard-routes');
+const profileRoutes = require('./routes/profile-routes');
+
 
 const app = express();
 const server = http.createServer(app);
@@ -30,6 +33,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/leaderboard', leaderboardRoutes);
+app.use('/api/profile', profileRoutes);
 
 // Conectare la MongoDB
 mongoose.connect('mongodb://localhost:27017/cmc_games')
